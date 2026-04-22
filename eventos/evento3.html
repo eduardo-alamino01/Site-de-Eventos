@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expo de Arte - Discover Events</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    header h1 {
+      font-size: 2rem;
+    }
+
+    .btn-voltar {
+      background: #667eea;
+      color: white;
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+
+    .btn-voltar:hover {
+      background: #764ba2;
+      transform: scale(1.05);
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .evento-header {
+      background: white;
+      border-radius: 10px;
+      padding: 3rem 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .evento-header h1 {
+      font-size: 2.5rem;
+      color: #667eea;
+      margin-bottom: 1.5rem;
+    }
+
+    .evento-info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .info-box {
+      background: #f8f9fa;
+      padding: 1.5rem;
+      border-left: 4px solid #667eea;
+      border-radius: 5px;
+    }
+
+    .info-box h3 {
+      color: #667eea;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .info-box p {
+      font-size: 1.1rem;
+      color: #333;
+      font-weight: 600;
+    }
+
+    .evento-description {
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .evento-description h2 {
+      color: #667eea;
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+    }
+
+    .evento-description p {
+      margin-bottom: 1rem;
+      color: #555;
+      line-height: 1.8;
+    }
+
+    .destaques {
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .destaques h2 {
+      color: #667eea;
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+    }
+
+    .destaques ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .destaques li {
+      padding: 0.8rem 0;
+      padding-left: 2rem;
+      position: relative;
+      color: #555;
+    }
+
+    .destaques li:before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #667eea;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .acoes {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .btn {
+      flex: 1;
+      padding: 1rem;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: #667eea;
+      border: 2px solid #667eea;
+    }
+
+    .btn-secondary:hover {
+      background: #667eea;
+      color: white;
+    }
+
+    footer {
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .evento-header h1 {
+        font-size: 1.8rem;
+      }
+
+      .acoes {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🎨 Expo de Arte</h1>
+    <a href="../index.html" class="btn-voltar">← Voltar</a>
+  </header>
+
+  <div class="container">
+    <div class="evento-header">
+      <h1>Expo de Arte 2026</h1>
+      
+      <div class="evento-info-grid">
+        <div class="info-box">
+          <h3>📅 Data</h3>
+          <p>10 de Maio de 2026</p>
+        </div>
+        <div class="info-box">
+          <h3>🕐 Horário</h3>
+          <p>10:00 - 18:00</p>
+        </div>
+        <div class="info-box">
+          <h3>📍 Local</h3>
+          <p>Museu de Arte Moderna</p>
+        </div>
+        <div class="info-box">
+          <h3>💰 Ingresso</h3>
+          <p>R$ 35,00 | Meia-entrada R$ 17,50</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="evento-description">
+      <h2>Sobre o Evento</h2>
+      <p>
+        A Expo de Arte 2026 é uma celebração de criatividade e expressão artística. Este evento reúne artistas talentosos de toda a região, apresentando uma diversidade impressionante de obras que abrangem desde artes plásticas tradicionais até instalações interativas modernas.
+      </p>
+      <p>
+        Durante esses dias, o Museu de Arte Moderna se transforma em um espaço vibrante de experimentação e apreciação artística. Visitantes poderão explorar diferentes espaços temáticos, participar de oficinas com artistas renomados, e assistir a debates sobre tendências contemporâneas na arte.
+      </p>
+    </div>
+
+    <div class="destaques">
+      <h2>Destaques do Evento</h2>
+      <ul>
+        <li>Exposição de obras de mais de 50 artistas nacionais e internacionais</li>
+        <li>Instalações interativas que permitem participação do público</li>
+        <li>Oficinas gratuitas de pintura, escultura e fotografia</li>
+        <li>Palestras com curadores e críticos de arte</li>
+        <li>Cafeteria artística com ambiente instagramável</li>
+        <li>Performance de artistas ao vivo todos os dias</li>
+        <li>Área infantil com atividades criativas</li>
+        <li>Loja de arte com obras de artistas expostos</li>
+      </ul>
+    </div>
+
+    <div class="evento-description">
+      <h2>Como Chegar</h2>
+      <p>
+        <strong>Endereço:</strong> Museu de Arte Moderna, Av. Paulista, 1000 - São Paulo, SP
+      </p>
+      <p>
+        <strong>Transporte Público:</strong> Metro linha A, estação Paulista, saída 2
+      </p>
+      <p>
+        <strong>Estacionamento:</strong> Estacionamento conveniado com desconto de 20% para visitantes do evento
+      </p>
+    </div>
+
+    <div class="evento-description">
+      <h2>Informações Importantes</h2>
+      <p>
+        <strong>Capacidade:</strong> 2.000 pessoas por dia (com controle de fluxo para segurança)
+      </p>
+      <p>
+        <strong>Acessibilidade:</strong> O evento é totalmente acessível com rampas, elevadores e áreas de descanso distribuídas por todos os espaços.
+      </p>
+      <p>
+        <strong>Alimentação:</strong> Não é permitido levar alimentos de fora. Contamos com cafeteria e bar dentro da exposição.
+      </p>
+    </div>
+
+    <div class="acoes">
+      <button class="btn btn-primary">🎫 Comprar Ingresso</button>
+      <button class="btn btn-secondary">💌 Convidar Amigos</button>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Discover Events. Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>
